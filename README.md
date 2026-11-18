@@ -54,4 +54,4 @@ By installing, downloading, or using **Vilcus CT Paste**, you acknowledge and ag
 
 ## Author
 
-Created and maintained by **Vilcus**(https://github.com/Vilcus).
+Created and maintained by [**Vilcus**](https://github.com/Vilcus).
