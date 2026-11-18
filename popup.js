@@ -4,15 +4,127 @@ document.addEventListener("DOMContentLoaded", () => {
   const status = document.querySelector("#status");
   const clipboardBtn = document.querySelector("#btn-clipboard");
   const clearBtn = document.querySelector("#btn-clear");
+  const keyBtn = document.querySelector("#btn-change-key");
+
+  // Load custom hotkey (Ctrl + [customKey]), default is "Enter"
+  let customKey = localStorage.getItem("vilcus_paste_key") || "Enter";
+  let isRecording = false;
+
+  function formatKeyName(key, code) {
+    if (key === " " || code === "Space") return "Space";
+    if (key.length === 1) return key.toUpperCase();
+    return key;
+  }
+
+  function updateKeyBadge() {
+    if (keyBtn) {
+      keyBtn.textContent = customKey;
+    }
+    const hintKeyElem = document.querySelector("#hint-key-name");
+    if (hintKeyElem) {
+      hintKeyElem.textContent = `"${customKey.toLowerCase()}"`;
+    }
+  }
+
+  updateKeyBadge();
+
+  // Sync with chrome.storage.local if available
+  if (typeof chrome !== "undefined" && chrome?.storage?.local) {
+    chrome.storage.local.get(["vilcus_paste_key"], (result) => {
+      if (result && result.vilcus_paste_key) {
+        customKey = result.vilcus_paste_key;
+        localStorage.setItem("vilcus_paste_key", customKey);
+        updateKeyBadge();
+      }
+    });
+  }
+
+  // Hotkey customization listener
+  if (keyBtn) {
+    keyBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (isRecording) {
+        isRecording = false;
+        keyBtn.classList.remove("recording");
+        updateKeyBadge();
+        return;
+      }
+
+      isRecording = true;
+      keyBtn.classList.add("recording");
+      keyBtn.textContent = "PRESS KEY...";
+
+      const onCaptureKey = (ev) => {
+        ev.preventDefault();
+        ev.stopPropagation();
+
+        // Cancel on Escape
+        if (ev.key === "Escape") {
+          isRecording = false;
+          keyBtn.classList.remove("recording");
+          updateKeyBadge();
+          window.removeEventListener("keydown", onCaptureKey, true);
+          return;
+        }
+
+        // Ctrl is required, so ignore Control key itself and wait for companion key
+        if (ev.key === "Control" || ev.key === "Meta") {
+          return;
+        }
+
+        const pickedKey = formatKeyName(ev.key, ev.code);
+        if (pickedKey) {
+          customKey = pickedKey;
+          localStorage.setItem("vilcus_paste_key", customKey);
+          if (typeof chrome !== "undefined" && chrome?.storage?.local) {
+            chrome.storage.local.set({ vilcus_paste_key: customKey });
+          }
+        }
+
+        isRecording = false;
+        keyBtn.classList.remove("recording");
+        updateKeyBadge();
+        window.removeEventListener("keydown", onCaptureKey, true);
+        if (codeElem) codeElem.focus();
+      };
+
+      window.addEventListener("keydown", onCaptureKey, true);
+    });
+
+    // Cancel recording if user clicks anywhere outside
+    document.addEventListener("click", (e) => {
+      if (isRecording && e.target !== keyBtn) {
+        isRecording = false;
+        keyBtn.classList.remove("recording");
+        updateKeyBadge();
+      }
+    });
+  }
 
   // Focus textarea on load
   if (codeElem) {
     codeElem.focus();
   }
 
-  // Keyboard shortcut: Ctrl + Enter to submit & Tab indentation
+  // Check if a key event matches Ctrl + [customKey]
+  function isCustomShortcut(e) {
+    const isCtrl = e.ctrlKey || e.metaKey;
+    if (!isCtrl) return false;
+
+    const pressed = formatKeyName(e.key, e.code);
+    return (
+      pressed.toLowerCase() === customKey.toLowerCase() ||
+      e.key.toLowerCase() === customKey.toLowerCase()
+    );
+  }
+
+  // Keyboard shortcut listener inside code editor
   codeElem.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
+    if (isRecording) return;
+
+    if (isCustomShortcut(e)) {
       e.preventDefault();
       pasteBtn.click();
       return;
@@ -30,6 +142,17 @@ document.addEventListener("DOMContentLoaded", () => {
         codeElem.value.substring(end);
 
       codeElem.selectionStart = codeElem.selectionEnd = start + tabSpaces.length;
+    }
+  });
+
+  // Global window listener for the shortcut when not typing
+  window.addEventListener("keydown", (e) => {
+    if (isRecording) return;
+    if (document.activeElement === codeElem) return; // handled by codeElem listener
+
+    if (isCustomShortcut(e)) {
+      e.preventDefault();
+      pasteBtn.click();
     }
   });
 

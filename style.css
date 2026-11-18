@@ -120,18 +120,41 @@ form {
 }
 
 .shortcut-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  text-align: center;
+  margin-top: -1px;
+  margin-bottom: 2px;
+}
+
+.shortcut-main {
   font-size: 10.5px;
   color: #7b96b6;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.3px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
-  margin-top: -2px;
-  margin-bottom: 2px;
 }
 
-.shortcut-hint kbd {
+.shortcut-sub {
+  font-size: 9px;
+  color: #556c88;
+  letter-spacing: 0.2px;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+.shortcut-sub #hint-key-name {
+  color: var(--neon-yellow);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.shortcut-hint .kbd-fixed {
   background: #0f1524;
   border: 1px solid var(--neon-cyan);
   color: var(--neon-cyan);
@@ -140,6 +163,50 @@ form {
   font-family: var(--font-cyber);
   font-weight: 800;
   box-shadow: 0 0 5px rgba(0, 240, 255, 0.3);
+  display: inline-block;
+}
+
+/* Swappable Hotkey Button */
+.key-binder {
+  background: #0f1524;
+  border: 1px solid var(--neon-yellow);
+  color: var(--neon-yellow);
+  padding: 1px 6px;
+  font-size: 9.5px;
+  font-family: var(--font-cyber);
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(252, 238, 10, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  clip-path: polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 0 100%);
+  transition: all 0.15s ease;
+  display: inline-block;
+}
+
+.key-binder:hover {
+  background: var(--neon-yellow);
+  color: #000;
+  box-shadow: 0 0 12px var(--neon-yellow);
+  transform: translateY(-1px);
+}
+
+.key-binder:active {
+  transform: scale(0.96);
+}
+
+/* Key Listening / Recording Mode */
+.key-binder.recording {
+  background: var(--neon-pink);
+  border-color: #ffffff;
+  color: #ffffff;
+  box-shadow: 0 0 15px var(--neon-pink);
+  animation: keyRecordingPulse 0.7s infinite alternate;
+}
+
+@keyframes keyRecordingPulse {
+  0% { transform: scale(1); box-shadow: 0 0 8px var(--neon-pink); }
+  100% { transform: scale(1.08); box-shadow: 0 0 18px var(--neon-pink); }
 }
 
 .cyber-btn-action {

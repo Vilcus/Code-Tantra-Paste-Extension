@@ -9,7 +9,7 @@ A sleek, lightweight browser extension designed to inject code directly into the
 - **Quick Actions:**
   - `[ Clipboard ]`: Import code directly from your system clipboard.
   - `[ Clear ]`: Reset the input editor instantly.
-- **Keyboard Shortcut:** Press `Ctrl + Enter` (or `Cmd + Enter`) inside the editor to paste directly into CodeTantra.
+- **Customizable Keyboard Shortcut:** Defaults to `Ctrl + Enter` (or `Cmd + Enter`), with a clickable key-binder to swap `Enter` to any key of your choice (e.g. `Ctrl + Space`, `Ctrl + V`, `Ctrl + M`). `Ctrl` is always preserved as the primary trigger key.
 - **Tab Key Indentation:** Preserves code structure by inserting two spaces on Tab.
 
 ## Installation (Unpacked Extension)
@@ -19,21 +19,6 @@ A sleek, lightweight browser extension designed to inject code directly into the
 3. Enable **Developer mode** in the upper-right corner.
 4. Click **Load unpacked** in the top-left menu.
 5. Select the folder containing these files.
-
-## Project Structure
-
-```text
-├── manifest.json     # Manifest V3 extension configuration
-├── popup.html        # Extension popup markup
-├── popup.js          # Injection script and event handlers
-├── style.css         # Cyberpunk theme styles
-├── jsconfig.json     # Chrome API IntelliSense setup
-├── icon.png          # High-resolution icon
-├── icon128.png       # 128x128 icon
-├── icon48.png        # 48x48 icon
-├── icon16.png        # 16x16 toolbar icon
-└── README.md         # Project documentation
-```
 
 ## Permissions
 

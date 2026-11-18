@@ -51,7 +51,12 @@
 
           <!-- Shortcut sentence above paste button -->
           <div class="shortcut-hint">
-            Press <kbd>Ctrl + Enter</kbd> to paste directly in CT
+            <div class="shortcut-main">
+              Press <kbd class="kbd-fixed">Ctrl</kbd> + <button id="btn-change-key" type="button" class="key-binder" title="Click to customize hotkey">Enter</button> to paste directly in CT
+            </div>
+            <div class="shortcut-sub">
+              (you can change the <span id="hint-key-name">"enter"</span> key for something else)
+            </div>
           </div>
 
           <!-- submit button -->
