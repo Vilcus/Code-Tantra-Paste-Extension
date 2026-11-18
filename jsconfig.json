@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "es2020", // Or an appropriate target for your project
+    "module": "esnext" // Or an appropriate module system
+  },
+  "typeAcquisition": {
+    "include": ["chrome"]
+  }
+}

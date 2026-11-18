@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vilcus CT Paste</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- CRT Scanline Overlay -->
+    <div class="cyber-scanlines"></div>
+
+    <div class="container">
+      <div class="hud-frame">
+        <!-- HUD Corner Brackets -->
+        <div class="hud-corner tl"></div>
+        <div class="hud-corner tr"></div>
+        <div class="hud-corner bl"></div>
+        <div class="hud-corner br"></div>
+
+        <h1 id="title">Vilcus CT Paste!</h1>
+
+        <form>
+          <!-- Quick action buttons -->
+          <div class="editor-actions">
+            <button id="btn-clipboard" type="button" class="cyber-btn-action" title="Paste from clipboard">
+              <span class="btn-bracket">[</span> Clipboard <span class="btn-bracket">]</span>
+            </button>
+            <button id="btn-clear" type="button" class="cyber-btn-action btn-danger" title="Clear code">
+              <span class="btn-bracket">[</span> Clear <span class="btn-bracket">]</span>
+            </button>
+          </div>
+
+          <!-- textarea to collect the code -->
+          <div class="textarea-wrap">
+            <textarea
+              id="code"
+              placeholder="Paste your code here..."
+              rows="10"
+              cols="50"
+              spellcheck="false"
+              autocorrect="off"
+              autocomplete="off"
+              autocapitalize="off"
+              wrap="off"
+            ></textarea>
+          </div>
+
+          <!-- div to show messages -->
+          <div id="status"></div>
+
+          <!-- Shortcut sentence above paste button -->
+          <div class="shortcut-hint">
+            Press <kbd>Ctrl + Enter</kbd> to paste directly in CT
+          </div>
+
+          <!-- submit button -->
+          <button id="submit" type="button">Paste</button>
+        </form>
+
+        <div id="note">
+          <div class="hazard-stripe"></div>
+          <div class="note-body">
+            <span id="note-highlight">Notice: </span>By using Vilcus CT Paste, you agree that you are solely responsible for complying with CodeTantra's Terms of Service and your institution's academic policies. This tool is provided "as-is" for personal and educational purposes; the author assumes no liability for any misuse, academic penalties, or account restrictions.
+          </div>
+        </div>
+
+        <div id="love">
+          Made with <span id="heart">&hearts;</span> by
+          <span id="name">Vilcus</span>
+        </div>
+      </div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

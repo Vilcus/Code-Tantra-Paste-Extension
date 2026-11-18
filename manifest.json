@@ -1,0 +1,28 @@
+{
+   "manifest_version": 3,
+   "name": "Vilcus CT Paste",
+   "version": "1.0.0",
+   "description": "An extension by Vilcus to paste or inject code into CodeTantra.",
+   "permissions": [
+      "scripting",
+      "activeTab",
+      "clipboardRead"
+   ],
+   "host_permissions": [
+      "https://*.codetantra.com/*"
+   ],
+   "action": {
+      "default_icon": {
+         "16": "icon16.png",
+         "48": "icon48.png",
+         "128": "icon128.png"
+      },
+      "default_title": "Vilcus CT Paste",
+      "default_popup": "popup.html"
+   },
+   "icons": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+   }
+}
