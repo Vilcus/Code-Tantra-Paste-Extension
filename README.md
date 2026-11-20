@@ -15,10 +15,17 @@ A sleek, lightweight browser extension designed to inject code directly into the
 ## Installation (Unpacked Extension)
 
 1. Clone or download this repository to your local machine.
-2. Open Google Chrome and visit `chrome://extensions`.
+2. Open Google Chrome and visit `chrome://extensions` or for Brave visit `brave://extensions`
 3. Enable **Developer mode** in the upper-right corner.
 4. Click **Load unpacked** in the top-left menu.
 5. Select the folder containing these files.
+<img width="1920" height="744" alt="Screenshot (1)" src="https://github.com/user-attachments/assets/1d77015b-832e-4018-b4f5-aacdb54e279f" />
+<img width="1920" height="734" alt="Screenshot (2)" src="https://github.com/user-attachments/assets/cddf6bff-dde0-4188-bf84-07a5aba08ad7" />
+<img width="1920" height="804" alt="Screenshot (3)" src="https://github.com/user-attachments/assets/06364af4-de5f-445e-b3e6-e770ae1ef2f5" />
+(unzip the file first)<img width="1920" height="854" alt="Screenshot (4)" src="https://github.com/user-attachments/assets/8aa8b5d0-0826-45b3-a951-e086ee8c021f" />
+<img width="1920" height="779" alt="Screenshot (5)" src="https://github.com/user-attachments/assets/2f734b08-d338-4b8d-a8bf-77f968706708" />
+<img width="1920" height="686" alt="Screenshot (6)" src="https://github.com/user-attachments/assets/f02eca10-b1a6-450e-977e-fda51948ae84" />
+<img width="1920" height="734" alt="Screenshot (7)" src="https://github.com/user-attachments/assets/4d67dfa5-6bec-439b-87dd-da33b893ba32" />
 
 ## Permissions
 
