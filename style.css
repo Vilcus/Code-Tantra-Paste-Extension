@@ -132,7 +132,7 @@ form {
 
 .shortcut-main {
   font-size: 10.5px;
-  color: #7b96b6;
+  color: #a8c7ed;
   letter-spacing: 0.3px;
   display: flex;
   align-items: center;
@@ -141,17 +141,17 @@ form {
 }
 
 .shortcut-sub {
-  font-size: 9px;
-  color: #556c88;
-  letter-spacing: 0.2px;
+  font-size: 10px;
+  color: #a5c1e0;
+  letter-spacing: 0.3px;
   font-style: italic;
-  opacity: 0.85;
 }
 
 .shortcut-sub #hint-key-name {
   color: var(--neon-yellow);
   font-style: normal;
-  font-weight: 700;
+  font-weight: 800;
+  text-shadow: 0 0 6px rgba(252, 238, 10, 0.6);
 }
 
 .shortcut-hint .kbd-fixed {
